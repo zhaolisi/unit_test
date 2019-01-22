@@ -1,0 +1,14 @@
+suit.addTest的参数 TestCaculatorAdd为类名，test_add1为测试用例名
+
+使用unittest框架，首先需要创建一个测试类并且继承unittest模块中的TestCase类
+
+test case:定义的以test开头的方法
+test fixtrue:setUp（测试数据准备）,tearDown（测试数据还原）
+test suit：测试套件，当需要运行部分测试用例的时候，需要使用unittest中的TestSuite类，创建类对象并且调用类的addTest方法将testcase添加到套件中
+test runner:测试执行，当需要执行套件中的测试用例时，需要使用unittest中的TextTestRunner类，创建类对象并且调用类的run方法执行套件中的用例
+
+discover执行顺序：按照文件名称A-Z a-z 0-9,文件名称里面的用例也是按照A-Z a-z 0-9顺序
+多级目录执行测试用例：写全部路径（每个文件夹下都要有__init__文件，表示该路径为python标准模块）
+用例执行与跳过：在用例前加@unittest.skip("说明为什么要跳过用例")
+                 @unittest.skipIf(3>2,"当条件为ture的时候执行")
+                 @unittest.expectedFailure 不管执行结果是否失败，统一标记为失败，但不会抛出错误信息
